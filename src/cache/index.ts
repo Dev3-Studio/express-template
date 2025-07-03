@@ -31,7 +31,7 @@ export class Cache {
     /**
      * Wrap an async function with time-based caching
      */
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    // deno-lint-ignore no-explicit-any
     createTimeCachedFunction<T extends (...args: any[]) => Promise<any>>(
         fn: T,
         keyPrefix: string = '',
