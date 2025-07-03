@@ -1,8 +1,9 @@
 import { SendEmailV3_1 } from 'node-mailjet';
 import { env } from '@/lib/env.ts';
 import { fromEmail, fromName, resetPasswordTemplateId, verificationTemplateId } from '@/data/email.ts';
-const Mailjet = require('node-mailjet');
+import Mailjet from 'node-mailjet';
 
+// @ts-ignore: Suppressing the 'not constructable' error.
 const mailjet = new Mailjet({
     apiKey: env.MAILJET_API_KEY,
     apiSecret: env.MAILJET_SECRET,

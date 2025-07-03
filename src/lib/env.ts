@@ -26,4 +26,4 @@ const envSchema = z.object({
     MAILJET_SECRET: z.string(),
 });
 
-export const env = envSchema.parse(Deno.env);
+export const env = envSchema.parse(Deno.env.toObject());
