@@ -1,7 +1,5 @@
 import {
     boolean,
-    doublePrecision,
-    foreignKey,
     pgTable,
     text,
     timestamp,
@@ -20,22 +18,8 @@ export const users = pgTable("users", {
     banned: boolean('banned'),
     banReason: text('ban_reason'),
     banExpires: timestamp('ban_expires'),
-    referralCode: text('referral_code').notNull().unique(),
-    buyAmounts: doublePrecision('buy_amounts').array(3).notNull(),
-    sellPercentages: doublePrecision('sell_percentages').array(3).notNull(),
-    gasMultiplier: doublePrecision('gas_multiplier').notNull(),
-    slippage: doublePrecision('slippage').notNull(),
-    mevProtection: boolean('mev_protection').notNull(),
-    referredBy: text('referred_by'),
-}, (table) => [
-    
-    // set referredBy to null if the referrer user is deleted
-    foreignKey({
-        name: 'referred_by_fk',
-        columns: [table.referredBy],
-        foreignColumns: [table.id],
-    })
-        .onDelete('set null'),
+}, () => [
+
 ]);
 
 export const sessions = pgTable("sessions", {
